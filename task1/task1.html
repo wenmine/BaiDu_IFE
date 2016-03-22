@@ -30,7 +30,7 @@
         这是一段很长很多内容的段落，这是一段很长很多内容的段落这是一段很长很多内容的段落这是一段很长很多内容的段落
         这是一段很长很多内容的段落这是一段很长很多内容的段落这是一段很长很多内容的段落<em>这里变斜体了作为强调</em>这是一段很长很多内容的段落
         这是一段很长很多内容的段落这是一段很长很多内容的段落这是一段很长很多内容的段落<strong>这里作为更加严重的强调</strong>
-        这是一段很长很多内容的段落，马上要换行了<br>这是一段很长很多内容的段落这是一段很长很多内容的段落,是一段很长很多内容的段落
+        这是一段很长很多内容的段落，马上要换行了<br>这是一段很长很多内容的段落，<a href="ife.baidu.com">这是一个链接</a>这是一段很长很多内容的段落,是一段很长很多内容的段落
         <img src="image" alt="好看的图片">
     </p>
     <hr>
@@ -52,25 +52,24 @@
             <h1>这是article1标题h1</h1>
             <h2>这是article1副标题h2</h2>
         </hgroup>
-        <p>作者:XXX</p>
+        <span>作者:XXX</span>
         <time datetime="2012-9-27" pubdate="pubdate">2012-9-27</time>
     </header>
     <p>本篇文章主要讲了三个部分</p>
     <ol>
-        <li><a href="#first"></a></li>
-        <li><a href="#second"></a></li>
-        <li><a href="#third"></a></li>
+        <li><a href="#first">第一部分</a></li>
+        <li><a href="#second">第二部分</a></li>
     </ol>
     <div>
         <section id="first">
-            <table summary="这个关于XXX的表格">
+            <table summary="这个关于XXX的表格" border="1">
                 <caption>统计信息</caption>
                 <thead>
-                    <tr>
-                        <th>这是表格的头部</th>
-                        <th>这是表格的头部</th>
-                        <th>这是表格的头部</th>
-                    </tr>
+                <tr>
+                    <th>这是表格的头部</th>
+                    <th>这是表格的头部</th>
+                    <th>这是表格的头部</th>
+                </tr>
                 </thead>
                 <tfoot>
                 <tr>
@@ -89,10 +88,26 @@
             </table>
         </section>
         <section id="second">
-
-        </section>
-        <section id="third">
-
+            <figure>
+                <figcaption>这是好看的图片</figcaption>
+                <img src="image/images.jpg" width="300px" height="168px"/>
+            </figure>
+            <figure>
+                <figcaption>这是好看的图片</figcaption>
+                <img src="image/images.jpg" width="300px" height="168px"/>
+            </figure>
+            <figure>
+                <figcaption>这是好看的图片</figcaption>
+                <img src="image/images.jpg" width="300px" height="168px"/>
+            </figure>
+            <figure>
+                <figcaption>这是好看的图片</figcaption>
+                <img src="image/images.jpg" width="300px" height="168px"/>
+            </figure>
+            <figure>
+                <figcaption>这是好看的图片</figcaption>
+                <img src="image/images.jpg" width="300px" height="168px"/>
+            </figure>
         </section>
     </div>
     <footer>
@@ -101,26 +116,68 @@
 </article>
 <aside>
     <div>
-        <h2>这是aside侧边栏中的分类导航1，若是博客则可以是写者按照日期等分类的导航、友情链接等</h2>
+        <h2>这是aside侧边栏中的分类导航1，若是博客则可以是写者按照日期等分类的导航、友情链接等，这是侧边栏的标题</h2>
         <div>
             <ul>
-                <li><a href="#">这是aside侧边栏中的按照日期等分类的导航</a></li>
-                <li><a href="#">这是aside侧边栏中的按照日期等分类的导航</a></li>
-                <li><a href="#">这是aside侧边栏中的按照日期等分类的导航</a></li>
+                <li><a href="#">这是aside侧边栏1中的内容</a></li>
+                <li><a href="#">这是aside侧边栏1中的内容</a></li>
+                <li><a href="#">这是aside侧边栏1中的内容</a></li>
             </ul>
         </div>
     </div>
     <div>
-        <h2>这是aside侧边栏中的分类导航2，若是博客则可以是按照日期等分类的导航、友情链接等</h2>
+        <h2>这是aside侧边栏中的分类导航2，这是侧边栏的标题</h2>
         <div>
             <ul>
-                <li><a href="#">这是aside侧边栏中的友情链接</a></li>
-                <li><a href="#">这是aside侧边栏中的友情链接</a></li>
-                <li><a href="#">这是aside侧边栏中的友情链接</a></li>
+                <li><a href="#">这是aside侧边栏2中的内容</a></li>
+                <li><a href="#">这是aside侧边栏2中的内容</a></li>
+                <li><a href="#">这是aside侧边栏2中的内容</a></li>
             </ul>
         </div>
     </div>
+    <div>
+        <h2>这是aside侧边栏中的分类导航3，这是侧边栏的标题</h2>
+        <div>
+            <ul>
+                <li><a href="#">这是aside侧边栏3中的内容</a></li>
+                <li><a href="#">这是aside侧边栏3中的内容</a></li>
+                <li><a href="#">这是aside侧边栏3中的内容</a></li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <h2>这是aside侧边栏中最后一个侧边栏，这是侧边栏的标题</h2>
+        <div>
+            <form>
+                <div>
+                    <label>请输入邮箱地址：</label><input placeholder="这是一个邮箱输入框" type="email" name="email">
+                    <p>邮箱地址请按照格式输入</p>
+                </div>
+                <div>
+                    <label>请输入密码：</label><input placeholder="这是一个密码输入框" type="password" name="password">
+                    <label>请重复输入密码</label><input placeholder="这是一个密码输入框" type="password" name="password">
+                    <p>密码请为6-16位英文数字</p>
+                </div>
+                <div>
+                    <label>性别：</label>
+                    <input type="radio" name="sex" value="male" checked>男
+                    <input type="radio" name="sex" value="female">女
+                    <label>城市</label>
+                    <select name="city">
+                        <option value="beijing" selected>北京</option>
+                        <option value="shanghai">上海</option>
+                    </select>
+                    <label>爱好：</label>
+                    <input type="checkbox" name="sport" value="sport" checked>运动
+                    <input type="checkbox" name="art" value="art" >艺术
+                    <input type="checkbox" name="science" value="science" >科学
+                    <label>个人描述</label><textarea style="width: 150px;height: 40px">这是一个多行输入框，输入您的个人描述</textarea>
+                    <input type="submit" name="submit" value="确认提交">
+                </div>
+            </form>
+        </div>
+    </div>
 </aside>
-<footer>© Copyright 2012 我爱水煮鱼 保留所有权利 </footer>
+<footer>© Copyright版权所有</footer>
 </body>
 </html>
