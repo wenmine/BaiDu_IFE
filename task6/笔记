@@ -1,0 +1,14 @@
+CSS制作小三角箭头方法：
+利用border-witdh和border-color
+如：  {
+              float: left;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-top: 8px solid transparent;
+              border-bottom: 8px solid #0F4573;
+              margin-right: 10px;
+              height: 0;
+              width: 0;
+              font-size: 0;
+          }(向上的箭头：则是设置底部的颜色存在，其他的左右和上边线条的颜色为透明)
+https://www.denpe.com/css-triangles/
