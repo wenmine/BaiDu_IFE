@@ -1,0 +1,160 @@
+一、IE盒子和W3C盒子
+1. IE传统下盒子模型（IE6以下，不含IE6版本或“QuirksMode下IE5.5+”）:
+    /*盒子所占的位置空间大小*/
+    空间高度 =  height + margin (height包含了元素内容宽度，边框宽度，内距宽度)
+    空间宽度 =  width + margin (wdth包含了元素内容宽度、边框宽度、内距宽度)
+    /*盒子实际大小*/
+    Height =  height(Height包含了元素内容宽度，边框宽度，内距宽度)
+    Width =   width(Width包含了元素内容宽度、边框宽度、内距宽度)
+  即：设置盒子的width、height时，此width = padding+border+元素内容的高度，height也同样。
+  如果在这个模型中设置padding，并不会撑宽盒子，，实际盒子的大小仍然等于我们设定的width、height属性的大小。
+
+2. w3c的标准盒子模型
+    /*盒子所占的位置空间大小*/
+    空间高度 =  height + padding + border + margin（width为内容宽度）
+    空间宽度 =  width + padding + border + margin（width为内容宽度）
+    /*盒子实际大小*/
+    Height =  height + padding + border （height为内容高度）
+    Width =  width + padding + border （width为内容宽度）
+ 即：设置盒子的width、height时，此width =元素内容的实际高度，height也同样。
+ 如果在这个模型中设置padding，会撑宽盒子，使实际盒子的大小不等于我们设定的width、height属性的大小。
+
+二、box-sizing ： content-box || border-box || inherit
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+1.当我们设置 box-sizing: content-box; 时，浏览器对盒模型的解释遵从我们之前认识到的 W3C 标准，当它定义width和height时，它的宽度不包括border和padding。
+2.当我们设置box-sizing: border-box; 时，浏览器对盒模型的解释与 IE6之前的版本相同，当它定义width和height时，border和padding则是被包含在宽高之内的。
+  内容的宽和高可以通过定义的“width”和 “height”减去相应方向的“padding”和“border”的宽度得到。
+  内容的宽和高必须保证不能为负，必要时将自动增大该元素border box的尺寸以使其内容的宽或高最小为0。
+ 这种设置可以使容器的宽度不受里面元素的影响，一直为我们的设定值。
+
+三、BFC 块级格式化上下文
+ BFC（Block formatting contexts），块级格式上下文，是页面上的一个隔离的独立容器，容器里面的子元素与容器外部元素不会相互影响，
+ 即BFC阻止外边距叠加、不重叠浮动并且可以包含浮动。因此我们常利用这点来闭合浮动，以达到消除浮动的副作用。
+
+  触发 BFC 的条件如下：
+  1.根元素(整个页面就是一个大的BFC)；
+  2.float为 left | right；
+  3.overflow为 hidden | auto | scroll；
+  4.display为 inline-block | table-cell | table-caption | flex | inline-flex；
+  5.position为 absolute | fixed；
+  需要主要的是："display:table" 本身并不产生 BFC，而是由它产生匿名框，匿名框中包含 "display:table-cell" 的框会产 BFC。 总之，对于 "display:table" 的元素，产生 BFC 的是匿名框而不是 "display:table"。
+
+  BFC的布局规则:
+  1.内部的块盒与行盒（行盒由一行中所有的内联元素所组成）都会垂直的沿着其父元素的边框排列。
+  2.Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠，即当box不在同一个块级格式化上下文时它们的边距就不会折叠
+  3.BFC 可以阻止元素被浮动元素覆盖，即使用BFC来防止文字环绕（将放文字的盒子触发新的BFC即可）
+  4.在BFC中，每个盒子的左外边框紧挨着左边框的包含块（从右到左的格式化时，则为右边框紧挨）。
+    即使在浮动里也是这样的（尽管一个盒子的边框会因为浮动而萎缩），除非这个盒子的内部创建了一个新的BFC（这种情况下,由于浮动，盒子本身将会变得更窄），
+  5.BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然。
+  6. 计算BFC的高度时，浮动元素也参与计算。
+
+
+ 四、清除浮动
+ 清除浮动的方法
+
+ 清除浮动的实质包括三种：CSS clear、BFC特性和触发haslayout。
+
+ 一. CSS clear清除浮动
+
+ 清除浮动的属性有clear:left | right | both；
+
+ 方法1. 空元素+clear
+
+ 在浮动元素中添加一个空的子元素，如<div class="clear></div>，并定义其样式为.clear { clear: both;}。
+
+ 方法2：br元素+clear
+
+ 在浮动元素中添加一个空的子元素，如<br style="clear: both;" />。
+
+ 方法3：:after+clear+zoom:1
+
+ 给浮动元素添加伪元素after，并为伪元素定义clear:both；对于不支持:after伪元素的浏览器如IE6~7，可以通过触发haslayout来达到闭合浮动的目的。代码如下：
+ HTML代码：
+
+ <div class="float-left clearfix"></div>
+ CSS代码：
+
+ .float-left {
+     float: left;
+ }
+ .clearfix:after {
+     content: " ";
+     display: block;
+     height: 0;
+     clear: both;
+ }
+ .clearfix {
+     *zoom: 1; /* zoom:1是为了触发IE6~7中的haslayout */
+ }
+方法1和2会添加无意义的空标签，有违结构与表现的分离；
+
+ 二. 触发浮动元素父元素的BFC来闭合浮动
+
+ 具体实现方法有：
+
+ 方法4：overflow:hidden | auto
+
+ <div class="float"></div>
+ .float {
+     overfloat: hidden;
+ }
+ 备注：不能和position配合使用，因为超出的尺寸会被隐藏；
+
+ 方法5：父级元素也一起浮动
+
+ <div class="parent">
+     <div class="float"></div>
+     <div class="float"></div>
+ </div>
+ .parent, .float {
+     float: left;
+ }
+ 备注：会产生新的浮动问题，不推荐使用；
+
+ 方法6：父元素设置display:table，子元素设置display:table:cell
+
+ 被指：盒模型属性改变，并由此会造成一些列问题，不推荐使用；
+
+ 三. 触发haslayout来闭合浮动
+
+ 由于IE6~7中不完全支持BFC，但是可以通过触发haslayout来达到闭合浮动的效果。
+
+ 触发hasLayout的条件：（摘抄自http://www.iyunlu.com/view/css-xhtml/55.html）
+ position: absolute；
+ float: left|right；
+ display: inline-block；
+ width: 除 “auto” 外的任意值；
+ height: 除 “auto” 外的任意值；
+ zoom: 除 “normal” 外的任意值；
+ writing-mode: tb-rl；
+ 在 IE7 中，overflow 也变成了一个 layout 触发器：
+ overflow: hidden|scroll|auto （ 这个属性在IE6-没有触发 layout 的功能）；
+ 清除浮动的最佳解决方案：
+ 在父元素里设置clear的class:
+ 接着样式为：
+ .clear:before,
+ .clear:after {
+    content: "";
+    display: table;
+    clear: both;
+ }
+ /* For IE 6/7 (trigger hasLayout) */
+ .clear {
+    zoom: 1;
+}
+
+https://www.zybuluo.com/dengzhirong/note/169868
+用float clear和BFC清除浮动 学习总结
+
+http://www.w3cplus.com/content/css3-box-sizing
+CSS3 Box-sizing
+
+http://www.uedsc.com/css3-use-box-sizing.html
+css3中box-sizing属性用法详解-content-box-padding-box-border-box
+
+http://www.iyunlu.com/view/css-xhtml/55.html
+那些年我们一起清除过的浮动
