@@ -1,0 +1,2 @@
+input添加背景图片：直接设置Background-image,调节背景图片所在Input框的位置：background-position
+修改input光标起始位置:可直接设置padding

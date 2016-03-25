@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>任务九</title>
+</head>
+<style>
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 56px;
+        background-color: #2189bf;
+        z-index: 10;;
+    }
+
+    header .logo {
+        position: absolute;
+        top: 9px;
+        left: 100px;
+        border: 1px solid #74b5d7;
+        width: 36px;
+        height: 36px;
+        background: #fff;
+    }
+    .logo .logo-box{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-top: 3px solid #2189bf;
+        border-left: 3px solid #2189bf;
+        display: block;
+        width: 14px;
+        height: 14px;
+    }
+    header .search-login {
+        position: absolute;
+        top: 12px;
+        right: 100px;
+    }
+
+    .search-login .search {
+        width: 273px;
+        height: 28px;
+        border-radius: 14px;
+        background: url("images/search.png") no-repeat 17px #fff;
+        border: none;
+        padding-left: 45px;
+        margin-right: 20px;
+        outline: none;
+        line-height: 28px;
+    }
+
+    .search-login .login {
+        display: inline-block;
+        background: url("images/admin.png");
+        width: 15px;
+        height: 16px;
+        vertical-align: middle;
+    }
+
+    .search-login .login-info {
+        font-family: "黑体";
+        font-size: 14px;
+        text-decoration: none;
+        color: #fff;
+    }
+    aside{
+        width: 260px;
+        background: #2a2e3d;
+    }
+</style>
+<body>
+<header>
+    <div class="logo"><span class="logo-box"></span></div>
+    <div class="search-login">
+        <input type="text" class="search">
+        <span class="login"></span>
+        <a class="login-info" href="#">登录</a>
+    </div>
+</header>
+<div class="container">
+    <aside>
+
+    </aside>
+</div>
+</body>
+</html>
